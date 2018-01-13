@@ -2,8 +2,6 @@
 // utilizando la programación orientada a objetos
 // Por José María Moreno
 
-#include "coche.h"
-
 #define ENA 5
 #define ENB 6
 #define IN1 7
@@ -52,39 +50,39 @@ String Coche::velocidadActual() {
     }
 }
 
-void Coche::encenderLed() {
-  //led.encender();
+void Coche::encenderLeds() {
+  led->encender();
 }
 
 // Arranca los motores
 void Coche::arrancarMotores() {
   ajustarVelocidad( despacio );
-  //Serial.println( "Ruuuuuummmmmm" );
+  Serial.println( "Ruuuuuummmmmm" );
 }
 
 void Coche::ajustarVelocidad( Velocidad nuevaVelocidad ) {
   _velocidad = nuevaVelocidad;
   switch ( _velocidad ) {
     case despacio:   
-      _velocidadAnalogica = 100;
+      _potenciaDelMotor = 100;
       Serial.println( "Pasamos a velocidad: despacio" );
       break;
     case normal:   
-      _velocidadAnalogica = 150;
+      _potenciaDelMotor = 150;
       Serial.println( "Pasamos a velocidad: normal" );
       break;
     case rapido: 
-      _velocidadAnalogica = 220;
+      _potenciaDelMotor = 220;
       Serial.println( "Pasamos a velocidad: rapido" );
       break;
     case aTope:      
-      _velocidadAnalogica = 255;
+      _potenciaDelMotor = 255;
       Serial.println( "Pasamos a velocidad: aTope" );
       break;
   }
-  analogWrite( ENA, _velocidadAnalogica );
-  analogWrite( ENB, _velocidadAnalogica );
-  Serial.println( "Establecemos velocidad " + String( _velocidadAnalogica ) );
+  analogWrite( ENA, _potenciaDelMotor );
+  analogWrite( ENB, _potenciaDelMotor );
+  Serial.println( "Establecemos velocidad " + String( _potenciaDelMotor ) );
   
   
   
@@ -92,15 +90,14 @@ void Coche::ajustarVelocidad( Velocidad nuevaVelocidad ) {
 }
 
 void Coche::avanza() {
-  //digitalWrite( ENA, HIGH );
-  //digitalWrite( ENB, HIGH );
-  Serial.println( "Avanzamos a velocidad " + String( _velocidadAnalogica ) );
+
+  Serial.println( "Avanzamos a velocidad " + String( _potenciaDelMotor ) );
   
   digitalWrite( IN1, HIGH );
   digitalWrite( IN2, LOW );
   digitalWrite( IN3, LOW );
   digitalWrite( IN4, HIGH );
-  Serial.println( "Avanzamos" );
+
 }
 
 void Coche::retrocede() {

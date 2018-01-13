@@ -4,6 +4,7 @@
 
 #include "WString.h"
 #include "led.h"
+
 #include "Arduino.h"
 
 enum Velocidad {
@@ -33,6 +34,7 @@ class Coche {
       void detener();
       void giraDerecha();
       void giraIzquierda();
+      void encenderLeds();
       void pruebaLuces();
       
       
@@ -47,10 +49,7 @@ class Coche {
     private:
       String _nombre;
       Velocidad _velocidad;
-      unsigned char _velocidadAnalogica;
+      unsigned char _potenciaDelMotor;
       
           
 };
-
-
-class Rueda {};

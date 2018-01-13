@@ -2,7 +2,7 @@
 // utilizando la programación orientada a objetos
 // Por José María Moreno
 
-#include "led.h"
+
 #include "Arduino.h"
 
 // Creamos un led
